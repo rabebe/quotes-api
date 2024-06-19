@@ -1,11 +1,9 @@
 const express = require("express");
-const quoteController = require("../../controllers/quoteController");
+const { getAllQuotes } = require("../../controllers/quoteController");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Get all quotes");
-});
+router.get("/", getAllQuotes);
 
 router.get("/random", (req, res) => {
     res.send("Get a random quote");
