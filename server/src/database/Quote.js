@@ -71,9 +71,25 @@ const updateQuoteById = (quoteId, changes) => {
     }
   };
 
+  const deleteQuoteById = (quoteId) => {
+    try {
+      const indexForDeletion = DB.quotes.findIndex((quote) => quote.id === quoteId);
+      if (indexForDeletion === -1) {
+        throw { 
+          status: 400, 
+          message: `Can't find quote with the id '${quoteId}'` };
+      }
+      DB.quotes.splice(indexForDeletion, 1);
+      saveToDatabase(DB);
+    } catch (error) {
+      throw { status: error?.status || 500, message: error?.message || error };
+    }
+  };
+
 module.exports = { 
     getAllQuotes,
     addQuote,
     getQuoteById,
-    updateQuoteById
+    updateQuoteById,
+    deleteQuoteById,
  };

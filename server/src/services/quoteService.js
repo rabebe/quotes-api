@@ -51,15 +51,19 @@ const getQuoteById = (quoteId) => {
       }
   };
   
-  const deleteQuoteById = () => {
-    return;
+  const deleteQuoteById = (quoteId) => {
+    try {
+      return Quote.deleteQuoteById(quoteId);
+    } catch (error) {
+      throw error;
+    }
   };
   
   module.exports = {
     getAllQuotes,
     getQuoteById,
-    getRandomQuote,
     addQuote,
     updateQuoteById,
     deleteQuoteById,
+    getRandomQuote,
   };

@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllQuotes, addQuote, getQuoteById, updateQuoteById } = require("../../controllers/quoteController");
+const { getAllQuotes, addQuote, getQuoteById, updateQuoteById, deleteQuoteById } = require("../../controllers/quoteController");
 
 const router = express.Router();
 
@@ -15,8 +15,6 @@ router.post("/add", addQuote);
 
 router.patch("/:quoteId", updateQuoteById);
 
-router.delete("/:quoteId", (req, res) => {
-  res.send("Delete an existing quote");
-});
+router.delete("/:quoteId", deleteQuoteById);
 
 module.exports = router;
