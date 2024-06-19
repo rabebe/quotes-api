@@ -1,9 +1,9 @@
 const quoteService = require("../services/quoteService");
 
 const getAllQuotes = (req, res) => {
-    const allquotes = quoteService.getAllQuotes();
-    res.send("Get all quotes");
-  };
+    const allQuotes = quoteService.getAllQuotes();
+    res.send({ status: "OK", data: allQuotes });
+    };
   
   const getOneQuote = (req, res) => {
     const quotebyId = quoteService.getOneQuote();

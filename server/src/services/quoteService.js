@@ -1,5 +1,8 @@
+const Quote = require("../database/Quote");
+
 const getAllQuotes = () => {
-    return;
+  const allQuotes = Quote.getAllQuotes();
+    return allQuotes;
   };
   
   const getOneQuote = () => {
