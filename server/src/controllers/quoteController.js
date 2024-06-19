@@ -25,11 +25,6 @@ const getQuoteById = (req, res) => {
       res.status(500).json({ status: "error", message: error.message });
   }
 };
-  
-  const getRandomQuote = (req, res) => {
-    const randomquote = quoteService.geRandomQuote();
-    res.send("Get a random existing quote");
-  };
 
   const addQuote = (req, res) => {
     const { text, author } = req.body;
@@ -71,6 +66,15 @@ const getQuoteById = (req, res) => {
     try {
       const deletedQuote = quoteService.deleteQuoteById(quoteId);
       res.send({ status: "OK", data: deletedQuote });
+    } catch (error) {
+      res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+  };
+  
+  const getRandomQuote = (req, res) => {
+    try {
+      const randomQuote = quoteService.getRandomQuote();
+      res.send({ status: "OK", data: randomQuote });
     } catch (error) {
       res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }

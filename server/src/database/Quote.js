@@ -86,10 +86,20 @@ const updateQuoteById = (quoteId, changes) => {
     }
   };
 
+  const getRandomQuote = () => {
+    try {
+      const randomIndex = Math.floor(Math.random() * DB.quotes.length);
+      return DB.quotes[randomIndex];
+    } catch (error) {
+      throw { status: 500, message: error };
+    }
+  };
+
 module.exports = { 
     getAllQuotes,
     addQuote,
     getQuoteById,
     updateQuoteById,
     deleteQuoteById,
+    getRandomQuote,
  };
