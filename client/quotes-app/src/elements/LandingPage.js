@@ -4,18 +4,6 @@ import { Link } from 'react-router-dom';
 const LandingPage = () => {
   return (
     <div className="container">
-      {/* <header>
-        <h1>Quotes App</h1>
-        <nav>
-          <ul className="nav-links">
-            <li><Link to="/all">All Quotes</Link></li>
-            <li><Link to="/random">Random Quote</Link></li>
-            <li><Link to="/add">Add Quote</Link></li>
-            <li><Link to="/update">Update Quote</Link></li>
-            <li><Link to="/delete">Delete Quote</Link></li>
-          </ul>
-        </nav>
-      </header> */}
 
       <main>
         <h2>Welcome to the Quotes App</h2>
