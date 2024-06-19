@@ -1,0 +1,46 @@
+{
+    "quotes": [
+      {
+        "id": "2f7e5a35-aba7-4956-9768-5ab8d1a51e23",
+        "text": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        "author": "Nelson Mandela",
+        "createdAt": "4/20/2024, 5:39:07 PM",
+        "updatedAt": "4/20/2024, 5:39:07 PM"
+      },
+      {
+        "id": "4b900397-5f10-4991-8f55-c2eb722aa695",
+        "text": "The way to get started is to quit talking and begin doing.",
+        "author": "Walt Disney",
+        "createdAt": "4/20/2024, 8:39:07 PM",
+        "updatedAt": "4/20/2024, 8:39:07 PM"
+      },
+      {
+        "id": "c9b52c60-4d25-4aaf-abc4-f4bc68079e0b",
+        "text": "Your time is limited, don't waste it living someone else's life.",
+        "author": "Steve Jobs",
+        "createdAt": "4/21/2024, 4:20:07 PM",
+        "updatedAt": "4/21/2024, 4:20:07 PM"
+      },
+      {
+        "id": "a747793b-0a19-4d5e-935f-5efec2a09ef7",
+        "text": "If life were predictable it would cease to be life, and be without flavor.",
+        "author": "Eleanor Roosevelt",
+        "createdAt": "4/26/2024, 4:29:07 PM",
+        "updatedAt": "4/26/2024, 4:29:07 PM"
+      },
+      {
+        "id": "3f440fdd-3f3a-45ba-8ef1-28f42d8f7878",
+        "text": "If you look at what you have in life, you'll always have more.",
+        "author": "Oprah Winfrey",
+        "createdAt": "4/29/2024, 10:09:07 PM",
+        "updatedAt": "4/29/2024, 10:09:07 PM"
+      },
+      {
+        "id": "d1688c36-4d56-49b4-b587-15e7c42ebcde",
+        "text": "The only impossible journey is the one you never begin.",
+        "author": "Tony Robbins",
+        "createdAt": "6/12/2024, 5:08:57 PM",
+        "updatedAt": "6/12/2024, 5:09:58 PM"
+      }
+    ]
+  }
