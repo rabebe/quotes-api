@@ -11,9 +11,13 @@ const getAllQuotes = (filterParams) => {
   }
 };
   
-  const getOneQuote = () => {
-    return;
-  };
+const getQuoteById = (quoteId) => {
+  try {
+    return Quote.getQuoteById(quoteId);
+  } catch (error) {
+    throw error;
+  }
+};
 
   const getRandomQuote = () => {
     return;
@@ -44,7 +48,7 @@ const getAllQuotes = (filterParams) => {
   
   module.exports = {
     getAllQuotes,
-    getOneQuote,
+    getQuoteById,
     getRandomQuote,
     addQuote,
     updateQuote,

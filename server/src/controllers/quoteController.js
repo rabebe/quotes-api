@@ -12,10 +12,19 @@ const getAllQuotes = (req, res) => {
   }
 };
   
-  const getOneQuote = (req, res) => {
-    const quotebyId = quoteService.getOneQuote();
-    res.send("Get an existing quote by Id");
-  };
+  
+const getQuoteById = (req, res) => {
+  const { quoteId } = req.params;
+  try {
+      const quote = quoteService.getQuoteById(quoteId);
+      if (!quote) {
+          return res.status(404).json({ status: "error", message: 'Quote not found' });
+      }
+      res.status(200).json({ status: "success", data: quote });
+  } catch (error) {
+      res.status(500).json({ status: "error", message: error.message });
+  }
+};
   
   const getRandomQuote = (req, res) => {
     const randomquote = quoteService.geRandomQuote();
@@ -49,7 +58,7 @@ const getAllQuotes = (req, res) => {
   
   module.exports = {
     getAllQuotes,
-    getOneQuote,
+    getQuoteById,
     getRandomQuote,
     addQuote,
     updateQuote,

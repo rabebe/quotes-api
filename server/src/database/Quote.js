@@ -36,7 +36,23 @@ const addQuote = (newQuote) => {
         throw { status: error?.status || 500, message: error?.message || error };
     }
 };
+
+const getQuoteById = (quoteId) => {
+    try {
+        const quote = DB.quotes.find((quote) => quote.id === quoteId);
+        if (!quote) {
+          throw { 
+            status: 400, 
+            message: `Can't find quote with the id '${quoteId}'` };
+        }
+        return quote;
+        } catch (error) {
+        throw { status: error?.status || 500, message: error?.message || error };
+    }
+};
+
 module.exports = { 
     getAllQuotes,
-    addQuote
+    addQuote,
+    getQuoteById,
  };

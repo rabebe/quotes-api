@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllQuotes, addQuote } = require("../../controllers/quoteController");
+const { getAllQuotes, addQuote, getQuoteById } = require("../../controllers/quoteController");
 
 const router = express.Router();
 
@@ -9,9 +9,7 @@ router.get("/random", (req, res) => {
     res.send("Get a random quote");
   });
 
-router.get("/:workoutId", (req, res) => {
-  res.send("Get quote by Id");
-});
+router.get("/:quoteId", getQuoteById);
 
 router.post("/add", addQuote);
 
@@ -19,7 +17,7 @@ router.patch("/:quoteId", (req, res) => {
   res.send("Update an existing quote");
 });
 
-router.delete("/:workoutId", (req, res) => {
+router.delete("/:quoteId", (req, res) => {
   res.send("Delete an existing quote");
 });
 
