@@ -20,4 +20,23 @@ const getAllQuotes = (filterParams) => {
       }
 };
 
-module.exports = { getAllQuotes };
+const addQuote = (newQuote) => {
+    try {
+        const isAlreadyAdded =
+            DB.quotes.findIndex((quote) => quote.text === newQuote.text) !== -1;
+        if (isAlreadyAdded) {
+            throw { 
+              status: 400, 
+              message: `Quote already exists` };
+        }
+        DB.quotes.push(newQuote);
+        saveToDatabase(DB);
+        return newQuote;
+        } catch (error) {
+        throw { status: error?.status || 500, message: error?.message || error };
+    }
+};
+module.exports = { 
+    getAllQuotes,
+    addQuote
+ };

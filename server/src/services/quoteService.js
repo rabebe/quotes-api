@@ -1,4 +1,6 @@
 const Quote = require("../database/Quote");
+const { v4: uuid } = require('uuid');
+
 
 const getAllQuotes = (filterParams) => {
   try {
@@ -17,15 +19,26 @@ const getAllQuotes = (filterParams) => {
     return;
   };
   
-  const createNewQuote = () => {
+  const addQuote = (newQuote) => {
+    const timestamp = new Date().toLocaleString("en-US", { timeZone: "UTC" });
+    const quoteToInsert = {
+        id: uuid(),
+      ...newQuote,
+      createdAt: timestamp,
+      updatedAt: timestamp,
+    };
+    try {
+      return Quote.addQuote(quoteToInsert);
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  const updateQuote = () => {
     return;
   };
   
-  const updateOneQuote = () => {
-    return;
-  };
-  
-  const deleteOneQuote = () => {
+  const deleteQuote = () => {
     return;
   };
   
@@ -33,7 +46,7 @@ const getAllQuotes = (filterParams) => {
     getAllQuotes,
     getOneQuote,
     getRandomQuote,
-    createNewQuote,
-    updateOneQuote,
-    deleteOneQuote,
+    addQuote,
+    updateQuote,
+    deleteQuote,
   };

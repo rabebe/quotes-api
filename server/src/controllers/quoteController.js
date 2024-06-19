@@ -22,18 +22,28 @@ const getAllQuotes = (req, res) => {
     res.send("Get a random existing quote");
   };
 
-  const createNewQuote = (req, res) => {
-    const createdQuote = quoteService.createNewQuote();
-    res.send("Create a new quote");
+  const addQuote = (req, res) => {
+    const { text, author } = req.body;
+    if (!text || !author) {
+        res.status(400).send({ status: "FAILED", data: { error: "Both 'text' and 'author' are required." } });
+        return;
+      }
+      const newQuote = { text, author };
+      try {
+        const createdQuote = quoteService.addQuote(newQuote);
+        res.status(201).send({ status: "OK", data: createdQuote });
+      } catch (error) {
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
+      }
   };
   
-  const updateOneQuote = (req, res) => {
-    const updatedQuote = quoteService.updateOneQuote();
+  const updateQuote = (req, res) => {
+    const updatedQuote = quoteService.updateQuote();
     res.send("Update an existing quote");
   };
   
-  const deleteOneQuote = (req, res) => {
-    const deletedQuote = quoteService.deleteOneQuote();
+  const deleteQuote = (req, res) => {
+    const deletedQuote = quoteService.deleteQuote();
     res.send("Delete an existing quote");
   };
   
@@ -41,7 +51,7 @@ const getAllQuotes = (req, res) => {
     getAllQuotes,
     getOneQuote,
     getRandomQuote,
-    createNewQuote,
-    updateOneQuote,
-    deleteOneQuote,
+    addQuote,
+    updateQuote,
+    deleteQuote,
   };

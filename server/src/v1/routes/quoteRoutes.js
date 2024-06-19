@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllQuotes } = require("../../controllers/quoteController");
+const { getAllQuotes, addQuote } = require("../../controllers/quoteController");
 
 const router = express.Router();
 
@@ -13,9 +13,7 @@ router.get("/:workoutId", (req, res) => {
   res.send("Get quote by Id");
 });
 
-router.post("/", (req, res) => {
-  res.send("Create a new quote");
-});
+router.post("/add", addQuote);
 
 router.patch("/:quoteId", (req, res) => {
   res.send("Update an existing quote");
