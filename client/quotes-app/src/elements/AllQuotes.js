@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllQuotes} from '../quotesApi';
+import { getAllQuotes } from '../quotesApi';
 
 function AllQuotes() {
     const [quotes, setQuotes] = useState([]);
