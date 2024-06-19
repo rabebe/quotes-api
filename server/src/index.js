@@ -1,11 +1,14 @@
 const express = require("express"); 
 const bodyParser = require("body-parser");
+const apicache = require("apicache");
 const v1QuoteRouter = require("./v1/routes/quoteRoutes");
 
 const app = express(); 
+const cache = apicache.middleware;
 const PORT = process.env.PORT || 5500; 
 
 app.use(bodyParser.json());
+app.use(cache("2 minutes"));
 app.use("/api/v1/quotes", v1QuoteRouter);
 
 app.listen(PORT, () => { 
