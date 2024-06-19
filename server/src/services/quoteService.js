@@ -1,8 +1,12 @@
 const Quote = require("../database/Quote");
 
-const getAllQuotes = () => {
-  const allQuotes = Quote.getAllQuotes();
-  return allQuotes;
+const getAllQuotes = (filterParams) => {
+  try {
+    const allQuotes = Quote.getAllQuotes(filterParams);
+    return allQuotes;
+  } catch (error) {
+    throw error;
+  }
 };
   
   const getOneQuote = () => {

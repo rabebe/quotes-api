@@ -1,8 +1,15 @@
 const quoteService = require("../services/quoteService");
 
 const getAllQuotes = (req, res) => {
-  const allQuotes = quoteService.getAllQuotes();
-  res.send({ status: "OK", data: allQuotes });
+  const { text, author } = req.query;
+  try {
+    const allQuotes = quoteService.getAllQuotes({ text, author });
+    res.send({ status: "OK", data: allQuotes });
+  } catch (error) {
+    res
+    .status(error?.status || 500)
+    .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
 };
   
   const getOneQuote = (req, res) => {
