@@ -38,11 +38,20 @@ const getQuoteById = (quoteId) => {
     }
   };
   
-  const updateQuote = () => {
-    return;
+  const updateQuoteById = (quoteId, changes) => {
+    const timestamp = new Date().toLocaleString("en-US", { timeZone: "UTC" });
+    const changesWithTimeStamp = {
+      ...changes,
+      updatedAt: timestamp
+    };
+      try {
+        return Quote.updateQuoteById(quoteId, changesWithTimeStamp);
+      } catch (error) {
+        throw error;
+      }
   };
   
-  const deleteQuote = () => {
+  const deleteQuoteById = () => {
     return;
   };
   
@@ -51,6 +60,6 @@ const getQuoteById = (quoteId) => {
     getQuoteById,
     getRandomQuote,
     addQuote,
-    updateQuote,
-    deleteQuote,
+    updateQuoteById,
+    deleteQuoteById,
   };

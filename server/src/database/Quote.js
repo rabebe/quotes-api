@@ -51,8 +51,29 @@ const getQuoteById = (quoteId) => {
     }
 };
 
+const updateQuoteById = (quoteId, changes) => {
+    try {
+      const indexForUpdate = DB.quotes.findIndex((quote) => quote.id === quoteId);
+      if (indexForUpdate === -1) {
+        throw { 
+          status: 400, 
+          message: `Can't find quote with the id '${quoteId}'` };
+      }
+      const updatedQuote = {
+        ...DB.quotes[indexForUpdate],
+        ...changes,
+      };
+      DB.quotes[indexForUpdate] = updatedQuote;
+      saveToDatabase(DB);
+      return updatedQuote;
+    } catch (error) {
+      throw { status: error?.status || 500, message: error?.message || error };
+    }
+  };
+
 module.exports = { 
     getAllQuotes,
     addQuote,
     getQuoteById,
+    updateQuoteById
  };

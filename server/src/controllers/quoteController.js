@@ -46,12 +46,22 @@ const getQuoteById = (req, res) => {
       }
   };
   
-  const updateQuote = (req, res) => {
-    const updatedQuote = quoteService.updateQuote();
-    res.send("Update an existing quote");
+  const updateQuoteById = (req, res) => {
+    const { quoteId } = req.params;
+    const changes = req.body;
+    if (!quoteId) {
+      res.status(400).send({ status: "FAILED", data: { error: "Parameter ':quoteId' cannot be empty" } });
+      return;
+    }
+    try {
+      const updatedQuote = quoteService.updateQuoteById(quoteId, changes);
+      res.send({ status: "OK", data: updatedQuote });
+    } catch (error) {
+      res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
+    }
   };
   
-  const deleteQuote = (req, res) => {
+  const deleteQuoteById = (req, res) => {
     const deletedQuote = quoteService.deleteQuote();
     res.send("Delete an existing quote");
   };
@@ -61,6 +71,6 @@ const getQuoteById = (req, res) => {
     getQuoteById,
     getRandomQuote,
     addQuote,
-    updateQuote,
-    deleteQuote,
+    updateQuoteById,
+    deleteQuoteById,
   };
