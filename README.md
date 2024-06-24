@@ -18,10 +18,15 @@ Frontend: React, Axios
 Database: JSON file (for simplicity in this example)
 
 ## API Endpoints
+
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">]
+(https://app.getpostman.com/run-collection/29662243-1be8e0a7-fdfc-493d-9734-4758b571d2b7?action=collection%2Ffork&source=rip_
+markdown&collection-url=entityId%3D29662243-1be8e0a7-fdfc-493d-9734-4758b571d2b7%26entityType%3Dcollection%26workspaceId%3D21b95ea0-6a24-48f6-b56f-b01a973c8cfc)
+
 - GET /api/v1/quotes/all - Get all quotes
 - GET /api/v1/quotes/random - Get a random quote
-- POST /api/v1/quotes/add - Add a new quote
 - GET /api/v1/quotes/:quoteId - Get a quote by ID
+- POST /api/v1/quotes/add - Add a new quote
 - PATCH /api/v1/quotes/:quoteId - Update a quote by ID
 - DELETE /api/v1/quotes/:quoteId - Delete a quote by ID
 
@@ -42,7 +47,7 @@ npm install
 Start server
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Frontend dependencies
