@@ -20,8 +20,11 @@ function AllQuotes() {
       <ul>
         {quotes.map((quote, index) => (
           <li key={index}>
-            <p>{quote.text}</p>
+            <p>"{quote.text}"</p>
             <p>- {quote.author}</p>
+            <p>Created at: {quote.createdAt}</p>
+            <p>Updated at: {quote.updatedAt}</p>
+            <br></br>
           </li>
         ))}
       </ul>
