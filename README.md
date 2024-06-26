@@ -45,7 +45,7 @@ npm install
 Start server
 
 ```bash
-npm run dev
+npm start
 ```
 
 ## Frontend dependencies
