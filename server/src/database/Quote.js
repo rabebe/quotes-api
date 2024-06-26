@@ -1,14 +1,17 @@
 const DB = require("./db.json");
 const { saveToDatabase } = require("./utils")
 
+// Retrieve all quotes, optionally filtering by text or author
 const getAllQuotes = (filterParams) => {
     try {
+      // Filter quotes by text
         let quotes = DB.quotes;
         if (filterParams.text) {
           quotes = quotes.filter((quote) => 
             quote.text.toLowerCase().includes(filterParams.text.toLowerCase())
           );
         }
+        // Filter quotes by author
         if (filterParams.author) {
           quotes = quotes.filter((quote) => 
             quote.author.toLowerCase().includes(filterParams.author.toLowerCase())
@@ -20,6 +23,7 @@ const getAllQuotes = (filterParams) => {
       }
 };
 
+// Add a new quote to the database
 const addQuote = (newQuote) => {
     try {
         const isAlreadyAdded =
@@ -29,6 +33,7 @@ const addQuote = (newQuote) => {
               status: 400, 
               message: `Quote already exists` };
         }
+        // Add the new quote and save to database
         DB.quotes.push(newQuote);
         saveToDatabase(DB);
         return newQuote;
@@ -37,6 +42,7 @@ const addQuote = (newQuote) => {
     }
 };
 
+// Retrieve a quote by its ID
 const getQuoteById = (quoteId) => {
     try {
         const quote = DB.quotes.find((quote) => quote.id === quoteId);
@@ -51,6 +57,7 @@ const getQuoteById = (quoteId) => {
     }
 };
 
+// Update a quotes by its ID
 const updateQuoteById = (quoteId, changes) => {
     try {
       const indexForUpdate = DB.quotes.findIndex((quote) => quote.id === quoteId);
@@ -59,6 +66,7 @@ const updateQuoteById = (quoteId, changes) => {
           status: 400, 
           message: `Can't find quote with the id '${quoteId}'` };
       }
+      // Merge existing quote with the changes
       const updatedQuote = {
         ...DB.quotes[indexForUpdate],
         ...changes,
@@ -71,6 +79,7 @@ const updateQuoteById = (quoteId, changes) => {
     }
   };
 
+  // Delete a quote by its ID
   const deleteQuoteById = (quoteId) => {
     try {
       const indexForDeletion = DB.quotes.findIndex((quote) => quote.id === quoteId);
@@ -79,6 +88,7 @@ const updateQuoteById = (quoteId, changes) => {
           status: 400, 
           message: `Can't find quote with the id '${quoteId}'` };
       }
+      // Remove the quote from the database and save
       DB.quotes.splice(indexForDeletion, 1);
       saveToDatabase(DB);
     } catch (error) {
@@ -86,6 +96,7 @@ const updateQuoteById = (quoteId, changes) => {
     }
   };
 
+  // Retrieve a random quote from the database
   const getRandomQuote = () => {
     try {
       const randomIndex = Math.floor(Math.random() * DB.quotes.length);

@@ -2,6 +2,7 @@ const Quote = require("../database/Quote");
 const { v4: uuid } = require('uuid');
 
 
+// Get all quotes and filtering by provided parameters
 const getAllQuotes = (filterParams) => {
   try {
     const allQuotes = Quote.getAllQuotes(filterParams);
@@ -10,7 +11,8 @@ const getAllQuotes = (filterParams) => {
     throw error;
   }
 };
-  
+
+// Get a specific quote by its ID
 const getQuoteById = (quoteId) => {
   try {
     return Quote.getQuoteById(quoteId);
@@ -18,7 +20,8 @@ const getQuoteById = (quoteId) => {
     throw error;
   }
 };
-  
+
+// Add a new quote with unique ID and timestamps
 const addQuote = (newQuote) => {
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "UTC" });
   const quoteToInsert = {
@@ -33,7 +36,8 @@ const addQuote = (newQuote) => {
     throw error;
   }
 };
-  
+
+// Update a quote by its ID
 const updateQuoteById = (quoteId, changes) => {
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "UTC" });
   const changesWithTimeStamp = {
@@ -46,7 +50,8 @@ const updateQuoteById = (quoteId, changes) => {
       throw error;
     }
 };
-  
+
+// Delete a quote by its ID
 const deleteQuoteById = (quoteId) => {
   try {
     return Quote.deleteQuoteById(quoteId);
@@ -55,6 +60,7 @@ const deleteQuoteById = (quoteId) => {
   }
 };
 
+// Get a random quote from the database
 const getRandomQuote = () => {
   try {
     return Quote.getRandomQuote();
